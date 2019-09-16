@@ -1,9 +1,22 @@
 ---
 - hosts: all
   tasks:
+    - name: Group hosts by OS family
+      group_by:
+        key: os_{{ ansible_facts['os_family'] }}
+- hosts: os_Archlinux
+  tasks:
     - name: Update packages
       pacman:
         update_cache: yes
         upgrade: yes
       tags:
         - pacman
+- hosts: os_Debian
+  tasks:
+    - name: Update packages
+      apt:
+        update_cache: yes
+        upgrade: yes
+      tags:
+        - apt
