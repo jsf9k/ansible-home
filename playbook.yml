@@ -2,6 +2,7 @@
 - hosts: all
   roles:
     - dotfiles
+    - pyenv
     - ufw
   tasks:
     - name: Install some basic packages to make the system useful
@@ -10,25 +11,13 @@
           - base-devel
           - bash-completion
           - bind-tools
-          - curl
           - emacs
-          - git
           - gnupg
           - ispell
           - mlocate
           - screen
           - source-highlight
-          - stow
           - wpa_supplicant
-      tags:
-        - pacman
-    - name: Install pyenv
-      shell: curl https://pyenv.run | bash
-      args:
-        creates: /home/{{ ansible_user }}/.pyenv
-      become_user: "{{ ansible_user }}"
-      tags:
-        - pyenv
 - hosts: basicx
   tasks:
     - name: Install packages for a basic machine with X

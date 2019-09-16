@@ -1,0 +1,12 @@
+---
+- name: Install curl
+  package:
+    name:
+      - curl
+- name: Install pyenv
+  shell: curl https://pyenv.run | bash
+  args:
+    creates: /home/{{ ansible_user }}/.pyenv
+  become_user: "{{ ansible_user }}"
+  tags:
+    - pyenv
