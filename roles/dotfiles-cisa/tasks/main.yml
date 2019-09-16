@@ -1,0 +1,17 @@
+---
+- name: Install git and stow
+  package:
+    name:
+      - git
+      - stow
+- name: Checkout .dotfiles_cisa repository
+  git:
+    repo: git@github.com:jsf9k/.dotfiles_cisa.git
+    dest: /home/{{ ansible_user }}/.dotfiles_cisa
+    accept_hostkey: yes
+  become_user: "{{ ansible_user }}"
+  notify:
+    - Install CISA dotfiles
+  tags:
+    - dotfiles
+    - dotfiles_cisa

@@ -6,7 +6,7 @@
     - ufw
   tasks:
     - name: Install some basic packages to make the system useful
-      pacman:
+      package:
         name:
           - base-devel
           - bash-completion
@@ -21,7 +21,7 @@
 - hosts: basicx
   tasks:
     - name: Install packages for a basic machine with X
-      pacman:
+      package:
         name:
           - alsa-utils
           - chromium
@@ -34,10 +34,8 @@
           - xlockmore
           - xorg
           - xterm
-      tags:
-        - pacman
     - name: Install font packages
-      pacman:
+      package:
         name:
           - noto-fonts
           - noto-fonts-emoji
@@ -46,7 +44,6 @@
           - ttf-bitstream-vera
           - ttf-inconsolata
       tags:
-        - pacman
         - fonts
     - name: Setup xdm
       block:
@@ -65,26 +62,15 @@
 - hosts: dev
   tasks:
     - name: Install dev packages
-      pacman:
+      package:
         name:
           - ansible
           - terraform
-      tags:
-        - pacman
 - hosts: cisa
   roles:
+    - dotfiles-cisa
     - piv
   tasks:
-    - name: Checkout .dotfiles_cisa repository
-      git:
-        repo: git@github.com:jsf9k/.dotfiles_cisa.git
-        dest: /home/{{ ansible_user }}/.dotfiles_cisa
-        accept_hostkey: yes
-      become_user: "{{ ansible_user }}"
-      notify:
-        - Install CISA dotfiles
-      tags:
-        - dotfiles
     - name: Setup feh background
       copy:
         content: |
@@ -96,26 +82,10 @@
         mode: 0755
       tags:
         - feh
-  handlers:
-    - name: Install CISA dotfiles
-      command: ./deploy.sh
-      args:
-        chdir: /home/{{ ansible_user }}/.dotfiles_cisa
-      become_user: '{{ ansible_user }}'
-      tags:
-        - dotfiles
 - hosts: home
+  roles:
+    - dotfiles-home
   tasks:
-    - name: Checkout .dotfiles_home repository
-      git:
-        repo: git@github.com:jsf9k/.dotfiles_home.git
-        dest: /home/{{ ansible_user }}/.dotfiles_home
-        accept_hostkey: yes
-      become_user: "{{ ansible_user }}"
-      notify:
-        - Install home dotfiles
-      tags:
-        - dotfiles
     - name: Setup feh background
       copy:
         content: |
@@ -127,11 +97,3 @@
         mode: 0755
       tags:
         - feh
-  handlers:
-    - name: Install home dotfiles
-      command: ./deploy.sh
-      args:
-        chdir: /home/{{ ansible_user }}/.dotfiles_home
-      become_user: "{{ ansible_user }}"
-      tags:
-        - dotfiles

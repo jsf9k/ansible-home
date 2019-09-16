@@ -1,0 +1,17 @@
+---
+- name: Install git and stow
+  package:
+    name:
+      - git
+      - stow
+- name: Checkout .dotfiles_home repository
+  git:
+    repo: git@github.com:jsf9k/.dotfiles_home.git
+    dest: /home/{{ ansible_user }}/.dotfiles_home
+    accept_hostkey: yes
+  become_user: "{{ ansible_user }}"
+  notify:
+    - Install home dotfiles
+  tags:
+    - dotfiles
+    - dotfiles_home

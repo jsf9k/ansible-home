@@ -1,0 +1,9 @@
+---
+- name: Install home dotfiles
+  command: ./deploy.sh
+  args:
+    chdir: /home/{{ ansible_user }}/.dotfiles_home
+  become_user: "{{ ansible_user }}"
+  tags:
+    - dotfiles
+    - dotfiles_home
