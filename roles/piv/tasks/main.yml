@@ -1,0 +1,20 @@
+---
+- name: Setup PIV capability
+  block:
+    - name: Install PIV-related packages
+      package:
+        name:
+          - ccid
+          - opensc
+          - pkcs11-helper
+          - pcsc-tools
+          - libp11
+      notify:
+        - Add NSS PIV module
+    - name: Enable and start the pcscd service
+      systemd:
+        name: pcscd
+        enabled: yes
+        state: started
+  tags:
+    - piv

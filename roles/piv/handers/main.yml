@@ -1,0 +1,6 @@
+---
+- name: Add NSS PIV module
+  command: modutil -force -dbdir sql:/home/{{ ansible_user }}/.pki/nssdb/ -add "PIV Module" -libfile /usr/lib/opensc-pkcs11.so
+  become_user: '{{ ansible_user }}'
+  tags:
+    - piv
