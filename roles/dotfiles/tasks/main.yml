@@ -1,4 +1,9 @@
 ---
+- name: Install git and stow
+  package:
+    name:
+      - git
+      - stow
 - name: Checkout .dotfiles repository
   git:
     repo: git@github.com:jsf9k/.dotfiles.git
