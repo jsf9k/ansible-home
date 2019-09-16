@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  roles:
+    - ufw
   tasks:
     - name: Install some basic packages to make the system useful
       pacman:
@@ -37,31 +39,6 @@
         - Install dotfiles
       tags:
         - dotfiles
-    - name: Ensure basic ufw service configuration
-      block:
-        - name: Install the ufw service
-          pacman:
-            name:
-              - ufw
-          tags:
-            - pacman
-        - name: Enable and start the ufw service
-          systemd:
-            name: ufw
-            enabled: yes
-            state: started
-        - name: Allow incoming ssh traffic through the firewall
-          ufw:
-            rule: allow
-            to_port: ssh
-            proto: tcp
-        - name: Enable firewall
-          ufw:
-            default: deny
-            logging: 'on'
-            state: enabled
-      tags:
-        - ufw
   handlers:
     - name: Dotfiles handlers
       block:
