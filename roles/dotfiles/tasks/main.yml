@@ -1,0 +1,12 @@
+---
+- name: Checkout .dotfiles repository
+  git:
+    repo: git@github.com:jsf9k/.dotfiles.git
+    dest: /home/{{ ansible_user }}/.dotfiles
+    accept_hostkey: yes
+  become_user: "{{ ansible_user }}"
+  notify:
+    - Delete existing config files
+    - Install dotfiles
+  tags:
+    - dotfiles

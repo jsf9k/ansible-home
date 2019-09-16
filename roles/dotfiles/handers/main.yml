@@ -1,0 +1,19 @@
+---
+- name: Dotfiles handlers
+  block:
+    # These two files are created at installation time, and they
+    # will make stow fail if not removed
+    - name: Delete existing config files
+      file:
+        path: /home/{{ ansible_user }}/{{ item }}
+        state: absent
+        loop:
+          - .bashrc
+          - .screenrc
+    - name: Install dotfiles
+      command: ./deploy.sh
+      args:
+        chdir: /home/{{ ansible_user }}/.dotfiles
+        become_user: "{{ ansible_user }}"
+  tags:
+    - dotfiles
