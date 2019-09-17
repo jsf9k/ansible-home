@@ -1,0 +1,12 @@
+---
+- name: Install font packages
+  package:
+    name:
+      - noto-fonts
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - terminus-font
+      - ttf-bitstream-vera
+      - ttf-inconsolata
+  tags:
+    - fonts

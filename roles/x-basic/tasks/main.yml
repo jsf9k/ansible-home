@@ -1,0 +1,14 @@
+---
+- name: Install packages for a basic machine with X
+  package:
+    name:
+      - chromium
+      - libu2f-host
+      - ratpoison
+      - rxvt-unicode
+      - rxvt-unicode-terminfo
+      - xlockmore
+      - xorg
+      - xterm
+  tags:
+    - x-basic

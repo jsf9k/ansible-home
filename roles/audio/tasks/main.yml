@@ -1,0 +1,7 @@
+---
+- name: Install packages for audio
+  package:
+    name:
+      - alsa-utils
+  tags:
+    - audio

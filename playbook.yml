@@ -6,45 +6,11 @@
     - ufw
     - wireless
 - hosts: basicx
-  tasks:
-    - name: Install packages for a basic machine with X
-      package:
-        name:
-          - alsa-utils
-          - chromium
-          - libu2f-host
-          - ratpoison
-          - rxvt-unicode
-          - rxvt-unicode-terminfo
-          - xdm-archlinux
-          - xlockmore
-          - xorg
-          - xterm
-    - name: Install font packages
-      package:
-        name:
-          - noto-fonts
-          - noto-fonts-emoji
-          - noto-fonts-extra
-          - terminus-font
-          - ttf-bitstream-vera
-          - ttf-inconsolata
-      tags:
-        - fonts
-    - name: Setup xdm
-      block:
-        - name: Replace dummy text with machine name
-          replace:
-            path: /etc/X11/xdm/archlinux/Xresources
-            regexp: CLIENTHOST
-            replace: '{{ ansible_hostname }}'
-        - name: Enable and start the xdm service
-          systemd:
-            name: xdm-archlinux
-            enabled: yes
-            state: started
-      tags:
-        - xdm
+  roles:
+    - audio
+    - fonts
+    - x-basic
+    - xdm
 - hosts: dev
   roles:
     - dev
