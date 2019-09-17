@@ -8,15 +8,6 @@
     - name: Install some basic packages to make the system useful
       package:
         name:
-          - base-devel
-          - bash-completion
-          - bind-tools
-          - emacs
-          - gnupg
-          - ispell
-          - mlocate
-          - screen
-          - source-highlight
           - wpa_supplicant
 - hosts: basicx
   tasks:
@@ -59,12 +50,8 @@
       tags:
         - xdm
 - hosts: dev
-  tasks:
-    - name: Install dev packages
-      package:
-        name:
-          - ansible
-          - terraform
+  roles:
+    - dev
 - hosts: cisa
   roles:
     - dotfiles-cisa

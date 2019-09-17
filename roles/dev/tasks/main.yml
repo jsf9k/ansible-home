@@ -1,0 +1,15 @@
+---
+- name: Install dev packages
+  package:
+    name:
+      - ansible
+      - base-devel
+      - bash-completion
+      - bind-tools
+      - emacs
+      - gnupg
+      - ispell
+      - mlocate
+      - screen
+      - source-highlight
+      - terraform
