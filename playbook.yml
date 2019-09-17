@@ -4,11 +4,7 @@
     - dotfiles
     - pyenv
     - ufw
-  tasks:
-    - name: Install some basic packages to make the system useful
-      package:
-        name:
-          - wpa_supplicant
+    - wireless
 - hosts: basicx
   tasks:
     - name: Install packages for a basic machine with X
