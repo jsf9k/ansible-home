@@ -3,3 +3,9 @@
   package:
     name:
       - wpa_supplicant
+  when: ansible_facts['os_family'] == 'Archlinux'
+- name: Install requirements for wireless
+  package:
+    name:
+      - wpasupplicant
+  when: ansible_facts['os_family'] == 'Debian'
