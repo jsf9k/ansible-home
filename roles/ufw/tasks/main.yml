@@ -2,7 +2,7 @@
 - name: Ensure basic ufw service configuration
   block:
     - name: Install the ufw service
-      pacman:
+      package:
         name:
           - ufw
     - name: Enable and start the ufw service
