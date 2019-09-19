@@ -27,9 +27,13 @@
 - hosts: cisa
   roles:
     - dotfiles-cisa
-    - feh-cisa
     - piv
+- hosts: cisa:&basicx
+  roles:
+    - feh-cisa
 - hosts: home
   roles:
     - dotfiles-home
+- hosts: home:&basicx
+  roles:
     - feh-home
