@@ -3,8 +3,8 @@
   tasks:
     - name: Group hosts by OS family
       group_by:
-        key: os_{{ ansible_facts['os_family'] }}
-- hosts: os_Archlinux
+        key: os_family_{{ ansible_facts['os_family'] }}
+- hosts: os_family_Archlinux
   tasks:
     - name: Update packages
       pacman:
@@ -12,7 +12,7 @@
         upgrade: yes
       tags:
         - pacman
-- hosts: os_Debian
+- hosts: os_family_Debian
   tasks:
     - name: Update packages
       apt:
