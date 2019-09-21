@@ -4,17 +4,18 @@
     - name: Group hosts by OS family
       group_by:
         key: os_family_{{ ansible_facts['os_family'] }}
-  roles:
-    - dotfiles
-    - pyenv
-    - ufw
-    - wireless
 - hosts: os_family_Debian
   tasks:
     - name: Install aptitude
       package:
         name:
           - aptitude
+- hosts: all
+  roles:
+    - dotfiles
+    - pyenv
+    - ufw
+    - wireless
 - hosts: basicx
   roles:
     - audio
