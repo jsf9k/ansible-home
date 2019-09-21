@@ -7,13 +7,13 @@
       file:
         path: /home/{{ ansible_user }}/{{ item }}
         state: absent
-        loop:
-          - .bashrc
-          - .screenrc
+      loop:
+        - .bashrc
+        - .screenrc
     - name: Install dotfiles
       command: ./deploy.sh
       args:
         chdir: /home/{{ ansible_user }}/.dotfiles
-        become_user: "{{ ansible_user }}"
+      become_user: "{{ ansible_user }}"
   tags:
     - dotfiles
