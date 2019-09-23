@@ -1,0 +1,8 @@
+---
+- name: Install HFS packages
+  package:
+    name:
+      - hfsprogs
+      - hfsutils
+  tags:
+    - hfs

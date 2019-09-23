@@ -1,5 +1,8 @@
 all:
   children:
+    afp:
+      hosts:
+        timemachine:
     basicx:
       hosts:
         haggard:
@@ -12,6 +15,9 @@ all:
         lefty:
         lemmy:
         philthy:
+    hfs:
+      hosts:
+        timemachine:
     home:
       hosts:
         haggard:

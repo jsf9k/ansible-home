@@ -16,6 +16,9 @@
     - pyenv
     - ufw
     - wireless
+- hosts: afp
+  roles:
+    - afp
 - hosts: basicx
   roles:
     - audio
@@ -25,6 +28,9 @@
 - hosts: dev
   roles:
     - dev
+- hosts: hfs
+  roles:
+    - hfs
 - hosts: cisa
   roles:
     - dotfiles-cisa

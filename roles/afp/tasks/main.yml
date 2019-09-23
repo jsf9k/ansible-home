@@ -1,0 +1,14 @@
+---
+- name: Setup netatalk (AFP)
+  block:
+    - name: Install the netatalk service
+      package:
+        name:
+          - netatalk
+    - name: Allow incoming AFP traffic through the firewall
+      ufw:
+        rule: allow
+        to_port: afpovertcp
+        proto: tcp
+  tags:
+    - afp
