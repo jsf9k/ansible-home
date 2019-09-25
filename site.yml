@@ -44,3 +44,42 @@
 - hosts: home:&basicx
   roles:
     - feh-home
+- hosts: timemachine
+  tasks:
+    - name: Setup external drive
+      block:
+        - name: Create a timemachine group
+          group:
+            name: timemachine
+        - name: Create the mount point
+          file:
+            path: /mnt/my_book
+            owner: root
+            group: timemachine
+            mode: 0770
+            state: directory
+        - name: Create fstab entry for external drive
+          mount:
+            path: /mnt/my_book
+            src: UUID=b2e5b378-15f6-3322-9213-df3fcc558ca6
+            fstype: hfsplus
+            opts: defaults,nodev,noexec,nosuid,gid=timemachine
+            state: mounted
+      tags:
+        - timemachine
+    - name: Configure netatalk/afpd
+      blockinfile:
+        path: /etc/netatalk/afp.conf
+        block: |
+          [Time Machine Volume]
+          path = /mnt/my_book
+          time machine = yes
+      notify:
+        - Restart netatalk
+      tags:
+        - afp
+  handlers:
+    - name: Restart netatalk
+      service:
+        name: netatalk
+        state: restarted
