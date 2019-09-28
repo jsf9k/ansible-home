@@ -44,6 +44,9 @@
 - hosts: home:&basicx
   roles:
     - feh-home
+- hosts: permanent
+  roles:
+    - prometheus-node-exporter
 - hosts: dickens
   tasks:
     - name: Install nut and collectd
