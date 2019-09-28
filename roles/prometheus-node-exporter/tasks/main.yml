@@ -8,7 +8,7 @@
     - name: Allow incoming prometheus-node-exporter access through the firewall
       ufw:
         rule: allow
-        to_port: 9100
+        to_port: '9100'
         proto: tcp
     - name: Enable and start the prometheus-node-exporter service
       service:
