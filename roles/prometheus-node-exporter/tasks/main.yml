@@ -1,0 +1,5 @@
+---
+- name: Install node exporter for Prometheus
+  package:
+    name:
+      - prometheus-node-exporter
