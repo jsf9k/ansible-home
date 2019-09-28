@@ -28,3 +28,8 @@ all:
       hosts:
         lemmy:
         philthy:
+    permanent:
+      hosts:
+        dickens:
+        haggard:
+        timemachine:
