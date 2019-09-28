@@ -1,5 +1,19 @@
 ---
-- name: Install node exporter for Prometheus
-  package:
-    name:
-      - prometheus-node-exporter
+- name: Setup prometheus-node-exporter
+  block:
+    - name: Install prometheus-node-exporter
+      package:
+        name:
+          - prometheus-node-exporter
+    - name: Allow incoming prometheus-node-exporter access through the firewall
+      ufw:
+        rule: allow
+        to_port: 9100
+        proto: tcp
+    - name: Enable and start the prometheus-node-exporter service
+      service:
+        name: prometheus-node-exporter
+        enabled: yes
+        state: started
+  tags:
+    - prometheus-node-exporter
