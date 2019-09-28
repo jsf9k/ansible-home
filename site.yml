@@ -44,6 +44,14 @@
 - hosts: home:&basicx
   roles:
     - feh-home
+- hosts: dickens
+  tasks:
+    - name: Install nut and collectd
+      package:
+        name:
+          - collectd
+          - nut-client
+          - nut-server
 - hosts: timemachine
   tasks:
     - name: Setup external drive
