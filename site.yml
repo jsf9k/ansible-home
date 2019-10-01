@@ -49,12 +49,10 @@
     - prometheus-node-exporter
 - hosts: dickens
   tasks:
-    - name: Install nut and collectd
+    - name: Install apcupsd
       package:
         name:
-          - collectd
-          - nut-client
-          - nut-server
+          - apcupsd
 - hosts: timemachine
   tasks:
     - name: Setup external drive
