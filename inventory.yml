@@ -2,34 +2,34 @@ all:
   children:
     afp:
       hosts:
-        timemachine:
+        timemachine.localdomain:
     basicx:
       hosts:
-        haggard:
-        lefty:
-        lemmy:
-        philthy:
+        haggard.localdomain:
+        lefty.localdomain:
+        lemmy.localdomain:
+        philthy.localdomain:
     dev:
       hosts:
-        haggard:
-        lefty:
-        lemmy:
-        philthy:
+        haggard.localdomain:
+        lefty.localdomain:
+        lemmy.localdomain:
+        philthy.localdomain:
     hfs:
       hosts:
-        timemachine:
+        timemachine.localdomain:
     home:
       hosts:
-        dickens:
-        haggard:
-        lefty:
-        timemachine:
+        dickens.localdomain:
+        haggard.localdomain:
+        lefty.localdomain:
+        timemachine.localdomain:
     cisa:
       hosts:
-        lemmy:
-        philthy:
+        lemmy.localdomain:
+        philthy.localdomain:
     permanent:
       hosts:
-        dickens:
-        haggard:
-        timemachine:
+        dickens.localdomain:
+        haggard.localdomain:
+        timemachine.localdomain:
