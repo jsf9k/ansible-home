@@ -16,6 +16,23 @@
     - pyenv
     - ufw
     - wireless
+  tasks:
+    - name: Configure dhcpcd
+      block:
+        - name: Send our hostname to the DHCP server
+          lineinfile:
+            backrefs: yes
+            line: hostname
+            path: /etc/dhcpcd.conf
+            regexp: "^#hostname$"
+        - name: Get NTP servers from the DHCP server
+          lineinfile:
+            backrefs: yes
+            line: option ntp_servers
+            path: /etc/dhcpcd.conf
+            regexp: "^#option ntp_servers$"
+    - name: Turn on NTP
+      command: /usr/bin/timedatectl set-ntp true
 - hosts: afp
   roles:
     - afp
@@ -92,3 +109,9 @@
       service:
         name: netatalk
         state: restarted
+- hosts: xfce4
+  tasks:
+    - name: Install xfce4
+      package:
+        name:
+          - xfce4
