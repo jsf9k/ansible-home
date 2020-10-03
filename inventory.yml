@@ -9,6 +9,7 @@ all:
         lefty.localdomain:
         lemmy.localdomain:
         philthy.localdomain:
+        volver.localdomain:
     dev:
       hosts:
         haggard.localdomain:
@@ -24,6 +25,7 @@ all:
         haggard.localdomain:
         lefty.localdomain:
         timemachine.localdomain:
+        volver.localdomain:
     cisa:
       hosts:
         lemmy.localdomain:
@@ -33,3 +35,6 @@ all:
         dickens.localdomain:
         haggard.localdomain:
         timemachine.localdomain:
+    xfce4:
+      hosts:
+        volver.localdomain:
