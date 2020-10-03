@@ -3,6 +3,8 @@
   package:
     name:
       - chromium
+      - cups
+      - hplip
       - libu2f-host
       - ratpoison
       - rxvt-unicode
@@ -10,5 +12,11 @@
       - xlockmore
       - xorg
       - xterm
+- name: Enable the cups-browsed service
+  systemd:
+    daemon_reload: yes
+    enabled: yes
+    name: cups-browsed
+    state: started
   tags:
     - x-basic
