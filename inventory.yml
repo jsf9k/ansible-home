@@ -5,6 +5,7 @@ all:
         timemachine.localdomain:
     basicx:
       hosts:
+        caduceus.localdomain:
         haggard.localdomain:
         lefty.localdomain:
         lemmy.localdomain:
@@ -21,6 +22,7 @@ all:
         timemachine.localdomain:
     home:
       hosts:
+        caduceus.localdomain:
         dickens.localdomain:
         haggard.localdomain:
         lefty.localdomain:
@@ -37,4 +39,5 @@ all:
         timemachine.localdomain:
     xfce4:
       hosts:
+        caduceus.localdomain:
         volver.localdomain:
