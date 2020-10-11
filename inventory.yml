@@ -7,14 +7,14 @@ all:
       hosts:
         caduceus.localdomain:
         haggard.localdomain:
-        lefty.localdomain:
+        # lefty.localdomain:
         lemmy.localdomain:
         philthy.localdomain:
         volver.localdomain:
     dev:
       hosts:
         haggard.localdomain:
-        lefty.localdomain:
+        # lefty.localdomain:
         lemmy.localdomain:
         philthy.localdomain:
     hfs:
@@ -25,7 +25,7 @@ all:
         caduceus.localdomain:
         dickens.localdomain:
         haggard.localdomain:
-        lefty.localdomain:
+        # lefty.localdomain:
         timemachine.localdomain:
         volver.localdomain:
     cisa:
